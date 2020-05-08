@@ -8,10 +8,10 @@ u"你妈死了",
 u"你是不是",
 u"低能",
 u"人话都听不懂",
-u"没家教的狗东西",    
+u"没家教的狗东西",   
 )
 
-dirty_set=[]    #最终的拼音方式
+rubbish_set=[]    #最终的拼音方式
 p=Pinyin()      #用于转换拼音
 
 #通过点击的方式切屏        
@@ -21,24 +21,24 @@ def trans_screen():
 
 #将中文转化成拼音
 def trans_chinese():
-    for c_dirty in chinese_dirty:
-        pin=p.get_pinyin(c_dirty,'')
+    for c_rubbish in chinese_dirty:
+        pin=p.get_pinyin(c_rubbish,'')
         pin_list=list(pin)
         pin_list.append("1")
-        dirty_set.append(pin_list)
+        rubbish_set.append(pin_list)
 
 #发送text
-def send_dirty():  
-    for p_dirty in dirty_set:
-        pyautogui.typewrite(p_dirty,0.01)
+def send_rubbish():  
+    for p_rubbish in rubbish_set:
+        pyautogui.typewrite(p_rubbish,0.01)
         pyautogui.typewrite(['enter'],0.01)
 
-#查看当前的dirty_set内容
+#查看当前的rubbish_set内容
 def chk_dirty():
-    for p_dirty in dirty_set:
+    for p_dirty in rubbish_set:
         print(p_dirty)
 
 if __name__ == "__main__":
     trans_chinese()
     trans_screen()
-    send_dirty()
+    send_rubbish()
