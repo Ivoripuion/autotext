@@ -1,6 +1,5 @@
 # coding=utf-8
 import pyautogui
-import time
 from xpinyin import Pinyin
 
 chinese_dirty=(
