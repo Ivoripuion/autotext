@@ -2,14 +2,21 @@
 import pyautogui
 from xpinyin import Pinyin
 
-chinese_dirty=(
-u"草泥马",
-u"你妈死了",
-u"你是不是",
-u"低能",
-u"人话都听不懂",
-u"没家教的狗东西",   
-)
+rubbish_dic=1
+
+if rubbish_dic==0:
+    chinese_rubbish=(
+    u"草泥马",
+    u"你妈死了",
+    u"你是不是",
+    u"低能",
+    u"人话都听不懂",
+    u"没家教的狗东西",   
+    )
+elif rubbish_dic==1:
+    rubbish_file=open("rubbish_dic.txt")
+    chinese_rubbish=rubbish_file.read().splitlines()
+
 
 rubbish_set=[]    #最终的拼音方式
 p=Pinyin()      #用于转换拼音
@@ -21,7 +28,7 @@ def trans_screen():
 
 #将中文转化成拼音
 def trans_chinese():
-    for c_rubbish in chinese_dirty:
+    for c_rubbish in chinese_rubbish:
         pin=p.get_pinyin(c_rubbish,'')
         pin_list=list(pin)
         pin_list.append("1")
@@ -34,11 +41,12 @@ def send_rubbish():
         pyautogui.typewrite(['enter'],0.01)
 
 #查看当前的rubbish_set内容
-def chk_dirty():
+def chk_rubbish():
     for p_dirty in rubbish_set:
         print(p_dirty)
 
 if __name__ == "__main__":
     trans_chinese()
+    #chk_rubbish()
     trans_screen()
     send_rubbish()
